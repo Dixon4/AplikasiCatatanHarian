@@ -30,3 +30,13 @@ https://youtu.be/DaBm-5oFlgg?si=Q6qQ6wcMuMy9AUXa
 1. **Clone repositori**:
    ```bash
    git clone https://github.com/Dixon4/AplikasiCatatanHarian.git
+2. **Buka project di IDE**:
+   - Untuk NetBeans, pilih Open Project dan arahkan ke folder project.
+3. **Jalankan aplikasi melalui IDE**.
+
+---
+
+### 📫 **Kontak**
+Jika ada pertanyaan, jangan ragu untuk menghubungi saya melalui nomor WA: 089522786264
+
+---
