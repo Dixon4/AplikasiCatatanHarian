@@ -6,24 +6,18 @@ Repositori ini dibuat untuk memenuhi tugas Ujian Tengah Semester (UTS) pada mata
 ---
 
 ## 📌 **Informasi Mahasiswa**
-- **Nama**: [Nama Anda]
-- **NPM**: [Nomor Pokok Mahasiswa]
-- **Kelas**: [Kelas Anda]
-- **Program Studi**: [Program Studi Anda]
+- **Nama**: Farras Norfaidzin
+- **NPM**: 2210010206
+- **Kelas**: 5A Reguler Pagi BJM
+- **Program Studi**: Teknik Informatika
 
 ---
 
 ## 🛠️ **Tools yang Digunakan**
-- **IDE**: [NetBeans, IntelliJ IDEA, atau IDE lainnya]
-- **Bahasa Pemrograman**: [Java, Python, dll.]
+- **IDE**: NetBeans
+- **Bahasa Pemrograman**: Java
 - **Framework/Library**:
-  - [Swing, JavaFX, PyQt5, dll.]
-  - [MySQL atau SQLite untuk Database]
-- **Database**:
-  - MySQL [jika ada koneksi database]
-- **Versi JDK/Python**: [Sebutkan versi yang digunakan]
-- **Dependency Manager**: [Gradle, Maven, pip, atau lainnya]
-
+  - Swing, JavaFX, JCalendar, dll.
 ---
 
 ## 📂 **Fitur Utama**
@@ -34,24 +28,12 @@ Repositori ini dibuat untuk memenuhi tugas Ujian Tengah Semester (UTS) pada mata
 
 ---
 
-## 📸 **Dokumentasi**
-
-### **Tampilan Aplikasi**
-1. **Halaman Utama**
-   ![Halaman Utama](https://via.placeholder.com/800x400?text=Screenshot+Halaman+Utama)
-
-2. **Halaman Input Data**
-   ![Halaman Input](https://via.placeholder.com/800x400?text=Screenshot+Halaman+Input+Data)
-
-3. **Halaman Hasil**
-   ![Halaman Hasil](https://via.placeholder.com/800x400?text=Screenshot+Halaman+Hasil)
-
 ### **Video Demo**
-[Tambahkan tautan video di sini, jika ada. Misalnya:](https://youtu.be/link_demo_video)
+https://youtu.be/DaBm-5oFlgg?si=Q6qQ6wcMuMy9AUXa
 
 ---
 
 ## 🚀 **Cara Menjalankan Aplikasi**
 1. **Clone repositori**:
    ```bash
-   git clone https://github.com/username/repo-uts-pbo2.git
+   git clone https://github.com/Dixon4/AplikasiCatatanHarian.git
