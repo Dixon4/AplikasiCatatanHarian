@@ -18,13 +18,6 @@ Repositori ini dibuat untuk memenuhi tugas Ujian Tengah Semester (UTS) pada mata
 - **Bahasa Pemrograman**: Java
 - **Framework/Library**:
   - Swing, JavaFX, JCalendar, dll.
----
-
-## 📂 **Fitur Utama**
-- [✔️] Fitur 1: [Penjelasan fitur]
-- [✔️] Fitur 2: [Penjelasan fitur]
-- [✔️] Fitur 3: [Penjelasan fitur]
-- [✔️] Dan lainnya...
 
 ---
 
