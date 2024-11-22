@@ -36,7 +36,7 @@ https://youtu.be/DaBm-5oFlgg?si=Q6qQ6wcMuMy9AUXa
 
 ---
 
-### 📫 **Kontak**
+## 📫 **Kontak**
 Jika ada pertanyaan, jangan ragu untuk menghubungi saya melalui nomor WA: 089522786264
 
 ---
