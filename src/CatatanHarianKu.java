@@ -1,9 +1,12 @@
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -67,6 +70,7 @@ public class CatatanHarianKu extends javax.swing.JFrame {
         tableCatatan = new javax.swing.JTable();
         jHapus = new javax.swing.JButton();
         jEkspor = new javax.swing.JButton();
+        jImpor = new javax.swing.JButton();
         jKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -197,7 +201,7 @@ public class CatatanHarianKu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.ipadx = 300;
         gridBagConstraints.ipady = 50;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
@@ -211,9 +215,10 @@ public class CatatanHarianKu extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 30;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel3.add(jHapus, gridBagConstraints);
 
@@ -225,12 +230,25 @@ public class CatatanHarianKu extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 20;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel3.add(jEkspor, gridBagConstraints);
+
+        jImpor.setBackground(new java.awt.Color(0, 204, 153));
+        jImpor.setText("Impor");
+        jImpor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jImporActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 20;
+        jPanel3.add(jImpor, gridBagConstraints);
 
         jTabbedPane2.addTab("CatatanKu", jPanel3);
 
@@ -337,7 +355,7 @@ public class CatatanHarianKu extends javax.swing.JFrame {
         }
         
          // Tampilkan pesan berhasil
-        JOptionPane.showMessageDialog(this, "Data berhasil ditambahkan!");
+        JOptionPane.showMessageDialog(this, "Data berhasil dihapus!");
         
         // Menghapus baris data
         tableModel.removeRow(selectedRow);
@@ -369,31 +387,73 @@ public class CatatanHarianKu extends javax.swing.JFrame {
     }//GEN-LAST:event_tableCatatanMouseClicked
 
     private void jEksporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEksporActionPerformed
-        // Mengekspor data tabel menjadi file CSV
-        try {
-            File file = new File("CatatanHarianKu.txt");
-            // Tulis header
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-                // Tulis header
-                for (int i = 0; i < tableModel.getColumnCount(); i++) {
-                    writer.write(tableModel.getColumnName(i) + ",");
-                }
-                writer.newLine();
-                
-                // Tulis data
-                for (int i = 0; i < tableModel.getRowCount(); i++) {
-                    for (int j = 0; j < tableModel.getColumnCount(); j++) {
-                        writer.write(tableModel.getValueAt(i, j).toString() + ",");
+        // Mengekspor data tabel menjadi file
+       JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Simpan File");
+        int result = fileChooser.showSaveDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+                int rowCount = tableModel.getRowCount();
+                int colCount = tableModel.getColumnCount();
+
+                for (int i = 0; i < rowCount; i++) {
+                    StringBuilder sb = new StringBuilder();
+                    for (int j = 0; j < colCount; j++) {
+                        sb.append(tableModel.getValueAt(i, j).toString());
+                        if (j < colCount - 1) {
+                            sb.append("\t"); 
+                        }
                     }
-                    writer.newLine();
+                    bw.write(sb.toString());
+                    bw.newLine();
                 }
+
+                JOptionPane.showMessageDialog(this, 
+                    "Data berhasil disimpan ke file: " + file.getName());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, 
+                    "Terjadi kesalahan saat menyimpan file: " + ex.getMessage());
             }
-            // Menampilkan pesan berhasil mengekspor
-            JOptionPane.showMessageDialog(this, "Data berhasil diekspor ke CatatanHarianKu.csv");
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + ex.getMessage());
         }
     }//GEN-LAST:event_jEksporActionPerformed
+
+    private void jImporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jImporActionPerformed
+        // Mengekspor data tabel menjadi file
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Pilih File untuk Diimpor");
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                String line;
+                int lineCount = 0;
+
+                while ((line = br.readLine()) != null) {
+                    lineCount++;
+
+                    String[] data = line.split("\t"); 
+                    if (data.length == 3) {
+                        // Tambahkan data ke tabel
+                        tableModel.addRow(new Object[]{data[0], data[1], data[2]});
+                    } else {
+                        JOptionPane.showMessageDialog(this, 
+                            "Format data tidak valid pada baris: " + lineCount);
+                    }
+                }
+
+                JOptionPane.showMessageDialog(this, 
+                    "Data berhasil diimpor dari file: " + file.getName());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, 
+                    "Terjadi kesalahan saat membaca file: " + ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_jImporActionPerformed
 
     private void clearFields(){
         //Untuk mengosongkan kolom inputan
@@ -442,6 +502,7 @@ public class CatatanHarianKu extends javax.swing.JFrame {
     private javax.swing.JButton jEdit;
     private javax.swing.JButton jEkspor;
     private javax.swing.JButton jHapus;
+    private javax.swing.JButton jImpor;
     private javax.swing.JButton jKeluar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
